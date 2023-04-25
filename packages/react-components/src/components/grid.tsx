@@ -133,6 +133,7 @@ class Grid extends PureComponent<Props, State> {
     render() {
         const {
             onGifVisible,
+            onGifLoad,
             onGifRightClick,
             className = Grid.className,
             onGifSeen,
@@ -181,6 +182,7 @@ class Grid extends PureComponent<Props, State> {
                                 onGifKeyPress={onGifKeyPress}
                                 onGifSeen={onGifSeen}
                                 onGifVisible={onGifVisible}
+                                onGifLoad={onGifLoad}
                                 onGifRightClick={onGifRightClick}
                                 user={user}
                                 overlay={overlay}

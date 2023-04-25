@@ -55,6 +55,8 @@ const Container = (props: ContainerProps) => (
 )
 
 export type EventProps = {
+    // fired when the gif is loaded
+    onGifLoad: (gif: IGif, e?: SyntheticEvent<HTMLElement, Event>) => void
     // fired every time the gif is show
     onGifVisible?: (gif: IGif, e?: SyntheticEvent<HTMLElement, Event>) => void
     // fired once after the gif loads and when it's completely in view
@@ -109,6 +111,7 @@ const Gif = ({
     onGifKeyPress = noop,
     onGifSeen = noop,
     onGifVisible = noop,
+    onGifLoad = noop,
     user = {},
     backgroundColor,
     overlay,
@@ -207,6 +210,7 @@ const Gif = ({
 
     const onImageLoad = (e: SyntheticEvent<HTMLElement, Event>) => {
         watchGif()
+        onGifLoad(gif, e)
         onGifVisible(gif, e) // gif is visible, perhaps just partially
         setLoadedClassName(Gif.imgLoadedClassName)
     }

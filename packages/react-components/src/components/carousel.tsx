@@ -126,6 +126,7 @@ class Carousel extends PureComponent<Props, State> {
     render() {
         const {
             onGifVisible,
+            onGifLoad,
             onGifRightClick,
             gifHeight,
             gifWidth,
@@ -162,6 +163,7 @@ class Carousel extends PureComponent<Props, State> {
                                 onGifKeyPress={onGifKeyPress}
                                 onGifSeen={onGifSeen}
                                 onGifVisible={onGifVisible}
+                                onGifLoad={onGifLoad}
                                 onGifRightClick={onGifRightClick}
                                 user={user}
                                 ml={gutter}
