@@ -56,7 +56,7 @@ const Container = (props: ContainerProps) => (
 
 export type EventProps = {
     // fired when the gif is loaded
-    onGifLoad: (gif: IGif, e?: SyntheticEvent<HTMLElement, Event>) => void
+    onGifLoad: (e?: SyntheticEvent<HTMLElement, Event>) => void
     // fired every time the gif is show
     onGifVisible?: (gif: IGif, e?: SyntheticEvent<HTMLElement, Event>) => void
     // fired once after the gif loads and when it's completely in view
@@ -210,7 +210,6 @@ const Gif = ({
 
     const onImageLoad = (e: SyntheticEvent<HTMLElement, Event>) => {
         watchGif()
-        onGifLoad(gif, e)
         onGifVisible(gif, e) // gif is visible, perhaps just partially
         setLoadedClassName(Gif.imgLoadedClassName)
     }
@@ -274,7 +273,7 @@ const Gif = ({
             tabIndex={tabIndex}
         >
             <div style={{ width, height, position: 'relative' }} ref={container}>
-                <picture>
+                <picture onLoad={onGifLoad}>
                     <source
                         type="image/webp"
                         srcSet={shouldShowMedia ? rendition.webp : placeholder}
